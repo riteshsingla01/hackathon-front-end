@@ -5,16 +5,14 @@ import './index.css';
 import App from './App';
 import SearchPage from './SearchPage'
 import Header from './Header'
+import Login from './Login'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 <Router>
   <Switch>
-    <Route path='/search'>
-      <SearchPage />
-    </Route>
     <Route path='/'>
-      <Header />
+      <Login />
     </Route>
   </Switch>
 </Router>
