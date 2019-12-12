@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import SearchPage from './SearchPage'
+import Header from './Header'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -13,7 +14,7 @@ ReactDOM.render(
       <SearchPage />
     </Route>
     <Route path='/'>
-      <App />
+      <Header />
     </Route>
   </Switch>
 </Router>
