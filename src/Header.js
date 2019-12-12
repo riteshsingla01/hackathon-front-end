@@ -7,7 +7,9 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { borders } from '@material-ui/system';
-import './HeaderStyle.css'
+//import './HeaderStyle.css'
+import { theme } from './DefaultPageTheme'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,6 +17,8 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+    //color: "#d11947",
+
   },
 }));
 
@@ -25,10 +29,10 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static" style={{ background: '#DFE1DF' }}>
         <Toolbar>
-          <Typography  headerTintColor = '#000000' align = "center" variant="h4" className={classes.title}>
-            Amplify
+          <Typography color ="primary" align = "center" variant="h4" className={classes.title}>
+            AMPlify
           </Typography>
-          <Button variant="outlined" className="menuButton"> Login </Button>
+          <Button color = "primary" variant="outlined" className="menuButton"> Login </Button>
         </Toolbar>
       </AppBar>
     </div>
