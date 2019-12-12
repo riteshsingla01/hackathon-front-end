@@ -1,4 +1,4 @@
-import React, { Component, useState, setState } from 'react';
+import React, {useState} from 'react';
 import { Redirect } from 'react-router-dom'
 import './App.css';
 import { theme, useStyles } from './DefaultPageTheme'
@@ -11,11 +11,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
-import Icon from '@material-ui/core/Icon';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const Login = () => {
-const [signIn, setSignIn] = useState(false);
+  const [signIn, setSignIn] = useState(false);
   function onSignInClick()
   {
     setSignIn(true);
@@ -28,56 +27,56 @@ const [signIn, setSignIn] = useState(false);
       <Header />
       <Container component="main" maxWidth="sm" style={{ marginTop: '8rem' }}>
         <div className = 'page'>
-      <Grid container justify='center' style={{ marginBottom: '2rem' }}>
-       <Grid item>
-         <Avatar  className={classes.avatar}>
-          <LockOutlinedIcon />
-         </Avatar>
-        </Grid>
-      </Grid>
+          <Grid container justify='center' style={{ marginBottom: '2rem' }}>
+            <Grid item>
+              <Avatar  className={classes.avatar}>
+                <LockOutlinedIcon />
+              </Avatar>
+            </Grid>
+          </Grid>
           <Grid container justify='center'>
             <Grid container justify='center'>
               <Grid item>
                 <Typography component="h1" variant="h5">
                   Sign In
                 </Typography>
-                </Grid>
               </Grid>
             </Grid>
-        <Grid item>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-        </Grid>
-      <Grid item>
-        <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-      </Grid>
+          </Grid>
+            <Grid item>
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            </Grid>
+            <Grid item>
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              />
+            </Grid>
       <Grid container style={{ marginTop: '1rem' }} justify ="center">
         <Grid item>
           <Button variant='contained' style={theme.palette.calmblue} onClick={onSignInClick}>Sign in</Button>
         </Grid>
       </Grid>
-      </div>
+        </div>
       </Container>
-      </MuiThemeProvider>
+    </MuiThemeProvider>
 )
 }
 
