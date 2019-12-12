@@ -59,7 +59,7 @@ function SearchPage()
               <Button variant='contained' color='primary'>Search</Button>
             </Grid>
             <Grid item>
-              <Button variant='contained'>Clear</Button>
+              <Button variant='contained' style={theme.palette.calmblue}>Clear</Button>
             </Grid>
           </Grid>
         </Grid>
