@@ -71,7 +71,7 @@ const Login = () => {
             </Grid>
       <Grid container style={{ marginTop: '1rem' }} justify ="center">
         <Grid item>
-          <Button variant='contained' style={theme.palette.calmblue} onClick={onSignInClick}>Sign in</Button>
+          <Button id='signinButton' variant='contained' style={theme.palette.calmblue} onClick={onSignInClick}>Sign in</Button>
         </Grid>
       </Grid>
         </div>

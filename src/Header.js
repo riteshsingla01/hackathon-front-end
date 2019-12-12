@@ -40,7 +40,7 @@ export default function ButtonAppBar() {
           <Typography color ="primary" justify = "center" variant="h4" className={classes.title}>
             CloudReady
           </Typography>
-          {window.location.pathname !== '/' ? <Button color = "primary" variant="outlined" className="menuButton" onClick={() => setLogout(true)}> Logout </Button> : null}
+          {window.location.pathname !== '/' ? <Button id='logoutButton' color = "primary" variant="outlined" className="menuButton" onClick={() => setLogout(true)}> Logout </Button> : null}
         </Toolbar>
       </AppBar>
     </div>
