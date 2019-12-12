@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme, makeStyles } from '@material-ui/core/styles'
 
 const stjudered = '#d11947';
 const stjudewhite = '#ffffff';
@@ -31,4 +31,14 @@ const theme = createMuiTheme({
   }
 });
 
-export { theme };
+const useStyles = makeStyles(theme => ({
+
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+
+
+}));
+
+export { theme, useStyles };

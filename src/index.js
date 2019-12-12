@@ -11,9 +11,8 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
 <Router>
   <Switch>
-    <Route path='/'>
-      <Login />
-    </Route>
+    <Route exact path='/' component={Login} />
+    <Route path='/search' component={SearchPage} />
   </Switch>
 </Router>
 , document.getElementById('root'));
