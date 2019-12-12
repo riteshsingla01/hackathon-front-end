@@ -16,42 +16,42 @@ function SearchPage()
         <Grid container>
           <Grid container spacing={2} justify='left'>
             <Grid item>
-              <TextField id='first-name' label='First Name' />
+              <TextField id='first-name' label='First Name' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item>
-              <TextField id='middle-name' label='Middle Name' />
+              <TextField id='middle-name' label='Middle Name' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item>
-              <TextField id='last-name' label='Last Name' />
+              <TextField id='last-name' label='Last Name' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item style={{ flexGrow: 2 }}></Grid>
             <Grid item>
-              <TextField id='constituent-id' label='Constituent ID' />
+              <TextField id='constituent-id' label='Constituent ID' style={theme.palette.gradientgray} />
             </Grid>
           </Grid>
           <Grid container style={{ marginTop: '2rem' }} spacing={2} justify='left'>
             <Grid item>
-              <TextField id='street1' label='Address' />
+              <TextField id='street1' label='Address' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item>
-              <TextField id='street2' label='Address 2' />
+              <TextField id='street2' label='Address 2' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item>
-              <TextField id='city' label='City' />
+              <TextField id='city' label='City' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item>
-              <TextField id='state' label='State' />
+              <TextField id='state' label='State' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item>
-              <TextField id='zip' label='Zip Code' />
+              <TextField id='zip' label='Zip Code' style={theme.palette.gradientgray} />
             </Grid>
           </Grid>
           <Grid container style={{ marginTop: '2rem' }} spacing={2} justify='left'>
             <Grid item>
-              <TextField id='email' label='Email' />
+              <TextField id='email' label='Email' style={theme.palette.gradientgray} />
             </Grid>
             <Grid item>
-              <TextField id='phone' label='Phone Number' />
+              <TextField id='phone' label='Phone Number' style={theme.palette.gradientgray} />
             </Grid>
           </Grid>
           <Grid container style={{ marginTop: '2rem' }} spacing={2} justify='left'>
