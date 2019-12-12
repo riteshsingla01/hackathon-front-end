@@ -29,8 +29,8 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static" style={{ background: '#DFE1DF' }}>
         <Toolbar>
-          <Typography color ="primary" align = "center" variant="h4" className={classes.title}>
-            AMPlify
+          <Typography color ="primary" justify = "center" variant="h4" className={classes.title}>
+            CloudReach
           </Typography>
           <Button color = "primary" variant="outlined" className="menuButton"> Login </Button>
         </Toolbar>
