@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/hackathon-front-end/static/css/main.94951385.chunk.css",
+    "main.js": "/hackathon-front-end/static/js/main.fae24fab.chunk.js",
+    "main.js.map": "/hackathon-front-end/static/js/main.fae24fab.chunk.js.map",
+    "runtime-main.js": "/hackathon-front-end/static/js/runtime-main.ddb76cc8.js",
+    "runtime-main.js.map": "/hackathon-front-end/static/js/runtime-main.ddb76cc8.js.map",
+    "static/js/2.7dbc142a.chunk.js": "/hackathon-front-end/static/js/2.7dbc142a.chunk.js",
+    "static/js/2.7dbc142a.chunk.js.map": "/hackathon-front-end/static/js/2.7dbc142a.chunk.js.map",
+    "index.html": "/hackathon-front-end/index.html",
+    "precache-manifest.3b60f56c1dd87791782bcb0387e5caa3.js": "/hackathon-front-end/precache-manifest.3b60f56c1dd87791782bcb0387e5caa3.js",
+    "service-worker.js": "/hackathon-front-end/service-worker.js",
+    "static/css/main.94951385.chunk.css.map": "/hackathon-front-end/static/css/main.94951385.chunk.css.map",
+    "static/js/2.7dbc142a.chunk.js.LICENSE": "/hackathon-front-end/static/js/2.7dbc142a.chunk.js.LICENSE",
+    "static/media/logo.svg": "/hackathon-front-end/static/media/logo.ee7cd8ed.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ddb76cc8.js",
+    "static/js/2.7dbc142a.chunk.js",
+    "static/css/main.94951385.chunk.css",
+    "static/js/main.fae24fab.chunk.js"
+  ]
+}
