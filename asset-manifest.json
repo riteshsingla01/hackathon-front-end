@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/hackathon-front-end/static/css/main.c96b9e10.chunk.css",
-    "main.js": "/hackathon-front-end/static/js/main.2a8546a1.chunk.js",
-    "main.js.map": "/hackathon-front-end/static/js/main.2a8546a1.chunk.js.map",
+    "main.js": "/hackathon-front-end/static/js/main.6a4f18e5.chunk.js",
+    "main.js.map": "/hackathon-front-end/static/js/main.6a4f18e5.chunk.js.map",
     "runtime-main.js": "/hackathon-front-end/static/js/runtime-main.ddb76cc8.js",
     "runtime-main.js.map": "/hackathon-front-end/static/js/runtime-main.ddb76cc8.js.map",
     "static/js/2.995e50d4.chunk.js": "/hackathon-front-end/static/js/2.995e50d4.chunk.js",
     "static/js/2.995e50d4.chunk.js.map": "/hackathon-front-end/static/js/2.995e50d4.chunk.js.map",
     "index.html": "/hackathon-front-end/index.html",
-    "precache-manifest.e43317640bcc16d7f38f07fc5d0c1344.js": "/hackathon-front-end/precache-manifest.e43317640bcc16d7f38f07fc5d0c1344.js",
+    "precache-manifest.1db7c13f96ad4933dedcf30dbed20dd4.js": "/hackathon-front-end/precache-manifest.1db7c13f96ad4933dedcf30dbed20dd4.js",
     "service-worker.js": "/hackathon-front-end/service-worker.js",
     "static/css/main.c96b9e10.chunk.css.map": "/hackathon-front-end/static/css/main.c96b9e10.chunk.css.map",
     "static/js/2.995e50d4.chunk.js.LICENSE": "/hackathon-front-end/static/js/2.995e50d4.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ddb76cc8.js",
     "static/js/2.995e50d4.chunk.js",
     "static/css/main.c96b9e10.chunk.css",
-    "static/js/main.2a8546a1.chunk.js"
+    "static/js/main.6a4f18e5.chunk.js"
   ]
 }
