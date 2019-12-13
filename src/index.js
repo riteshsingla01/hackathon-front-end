@@ -7,7 +7,7 @@ import Login from './Login'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-<Router>
+<Router basename={window.location.pathname || ''}>
   <Switch>
     <Route exact path='/' component={Login} />
     <Route path='/search' component={SearchPage} />

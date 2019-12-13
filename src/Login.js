@@ -49,10 +49,10 @@ const Login = () => {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             </Grid>
@@ -71,7 +71,7 @@ const Login = () => {
             </Grid>
       <Grid container style={{ marginTop: '1rem' }} justify ="center">
         <Grid item>
-          <Button id='signinButton' variant='contained' style={theme.palette.calmblue} onClick={onSignInClick}>Sign in</Button>
+          <Button id='signInButton' variant='contained' style={theme.palette.calmblue} onClick={onSignInClick}>Sign in</Button>
         </Grid>
       </Grid>
         </div>
