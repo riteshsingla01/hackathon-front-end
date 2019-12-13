@@ -18,7 +18,7 @@ const Login = () => {
   const [signIn, setSignIn] = useState(false);
   function onSignInClick()
   {
-    if (pageRef.parentNode.querySelector('#username').value  === "test" && pageRef.parentNode.querySelector('#password').value  === "test" )
+    if (pageRef.parentNode.querySelector('#username').value  === "bowmanm" && pageRef.parentNode.querySelector('#password').value  === "test" )
       setSignIn(true);
 
     else {

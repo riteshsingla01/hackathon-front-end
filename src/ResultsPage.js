@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Redirect } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -11,14 +11,13 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import axios from 'axios'
 import Header from './Header'
 import { theme } from './DefaultPageTheme'
 import './DefaultPageStyle.css'
 
 function sortCompare(a, b, sortColumn, sortDirection)
 {
-  if (a[sortColumn] < b[sortColumn] && sortDirection === 'asc')
+  if ((a[sortColumn] < b[sortColumn] && sortDirection === 'asc') || (a[sortColumn] > b[sortColumn] && sortDirection === 'desc'))
     return -1;
   else
     return 1;
@@ -31,25 +30,7 @@ function sortResults(results, sortColumn, sortDirection)
 
 const ResultsPage = (props) =>
 {
-  const [state, setState] = useState({page: 0, gotoSearch: false, searchResults: [], resultsPerPage: 50, sortColumn: '', sortDirection: 'asc'});
-
-  const getSearchResults = async () =>
-  {
-    var searchKeys = Object.keys(props.location.state.search);
-
-    var sendObj = {}
-
-    for (var i = 0; i < searchKeys.length; i++)
-    {
-      sendObj[searchKeys[i]] = props.location.state.search[searchKeys[i]]
-    }
-
-    var matches = await axios.post('http://epsappd1s1.alsac.local/ConstituentSearch/v1/search', sendObj, {headers: {'Content-Type': 'application/json'}});
-
-    setState(prevState => {return {...prevState, searchResults: matches.matches}});
-  }
-
-  getSearchResults();
+  const [state, setState] = useState({page: 0, gotoSearch: false, searchResults: props.location.state.searchResults, resultsPerPage: 50, sortColumn: '', sortDirection: 'asc'});
 
   const selectColumnChange = (e) =>
   {
@@ -110,14 +91,14 @@ const ResultsPage = (props) =>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography>{props.constituent.firstName + ' ' + props.constituent.middleName + ' ' + props.constituent.lastName}</Typography>
-          <Typography style={{ position: 'absolute', left: '80%' }}>{props.constituent.constituentId}</Typography>
+          <Typography style={{ position: 'absolute', left: '75%' }}>{props.constituent.constituentId}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
             <Typography>Address: {props.constituent.street1 + ' ' + props.constituent.city + ', ' + props.constituent.state + ', ' + props.constituent.zip}</Typography>
         </ExpansionPanelDetails>
         <ExpansionPanelDetails>
             <Typography>Phone Number: {props.constituent.phoneNumber}</Typography>
-            <Typography style={{ position: 'absolute', left: '80%' }}>Email: {props.constituent.email}</Typography>
+            <Typography style={{ position: 'absolute', left: '75%' }}>Email: {props.constituent.email}</Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     )
@@ -132,7 +113,10 @@ const ResultsPage = (props) =>
         <Grid container spacing={1} style={{ display: 'block', alignItems: 'center', justifyContent: 'center' }}>
           {state.searchResults.map((value, index) =>
           {
-            return <Grid item key={'key' + index}><ResultPage constituent={value} key={index} /></Grid>
+            if (index >= state.page * state.resultsPerPage && index < (state.page + 1) * state.resultsPerPage)
+              return <Grid item key={'key' + index}><ResultPage constituent={value} key={index} /></Grid>;
+            else
+              return null;
           })}
         </Grid>
         <Grid container spacing={1} style={{ display: 'block', alignItems: 'center', justifyContent: 'center' }}>

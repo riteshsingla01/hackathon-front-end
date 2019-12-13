@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import NativeSelect from '@material-ui/core/NativeSelect'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
+import axios from 'axios'
 import Header from './Header'
 import { theme } from './DefaultPageTheme'
 import './DefaultPageStyle.css'
@@ -77,16 +78,16 @@ class SearchPage extends Component
   {
     super(props);
 
-    this.state = {search: false, state: ''};
+    this.state = {search: false, searchResults: []};
 
     this.pageRef = React.createRef();
 
     this.onZipChange = this.onZipChange.bind(this);
     this.onPhoneNumberChange = this.onPhoneNumberChange.bind(this);
     this.clearInputs = this.clearInputs.bind(this);
-    this.onSearch = this.onSearch.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
     this.getSearchState = this.getSearchState.bind(this);
+    this.getSearchResults = this.getSearchResults.bind(this)
   }
 
   onZipChange(e)
@@ -149,11 +150,6 @@ class SearchPage extends Component
     }
   }
 
-  onSearch()
-  {
-    this.setState({search: true});
-  }
-
   onSelectChange(e)
   {
     this.setState({state: e.target.value})
@@ -170,14 +166,32 @@ class SearchPage extends Component
         val = this._cleanPhoneNumber(val);
       state[nodes[i].querySelector('input').id] = val;
     }
+    state['state'] = this.pageRef.parentNode.querySelector('#state').value;
     return state;
+  }
+
+  async getSearchResults()
+  {
+    var state = this.getSearchState()
+    var searchKeys = Object.keys(state);
+
+    var sendObj = {}
+
+    for (var i = 0; i < searchKeys.length; i++)
+    {
+      sendObj[searchKeys[i]] = state[searchKeys[i]]
+    }
+
+    var matches = await axios.post('http://3.90.164.170:30098/v1/search', sendObj, {headers: {'Content-Type': 'application/json'}});
+
+    this.setState({search: true, searchResults: matches.data.matches});
   }
 
   render()
   {
     return (
       <MuiThemeProvider theme={theme}>
-        {this.state.search ? <Redirect to={{ pathname: '/results', state: {search: this.getSearchState()} }} /> : null}
+        {this.state.search ? <Redirect to={{ pathname: '/results', state: {searchResults: this.state.searchResults} }} /> : null}
         <Header />
         <div className='page' ref={(e) => this.pageRef = e}>
           <Grid container>
@@ -229,7 +243,7 @@ class SearchPage extends Component
             </Grid>
             <Grid container style={{ marginTop: '2rem' }} spacing={2}>
               <Grid item>
-                <Button id='searchButton' variant='contained' style={theme.palette.calmblue} onClick={this.onSearch}>Search</Button>
+                <Button id='searchButton' variant='contained' style={theme.palette.calmblue} onClick={this.getSearchResults}>Search</Button>
               </Grid>
               <Grid item>
                 <Button id='clearButton' variant='contained' style={theme.palette.calmblue} onClick={this.clearInputs}>Clear</Button>
