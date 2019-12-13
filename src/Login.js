@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { Redirect } from 'react-router-dom'
-import './App.css';
 import { theme, useStyles } from './DefaultPageTheme'
 import Header from './Header'
 import Avatar from '@material-ui/core/Avatar';
