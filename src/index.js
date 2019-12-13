@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './index.css';
 import SearchPage from './SearchPage'
 import Login from './Login'
+import ResultsPage from './ResultsPage'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -11,6 +12,7 @@ ReactDOM.render(
   <Switch>
     <Route exact path='/' component={Login} />
     <Route path='/search' component={SearchPage} />
+    <Route path='/results' component={ResultsPage} />
   </Switch>
 </Router>
 , document.getElementById('root'));

@@ -1,11 +1,75 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import NativeSelect from '@material-ui/core/NativeSelect'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import Header from './Header'
 import { theme } from './DefaultPageTheme'
 import './DefaultPageStyle.css'
+
+const states = [
+  'AL',
+	'AK',
+	'AS',
+	'AZ',
+	'AR',
+	'CA',
+	'CO',
+	'CT',
+	'DE',
+	'DC',
+	'FM',
+	'FL',
+	'GA',
+	'GU',
+	'HI',
+	'ID',
+	'IL',
+	'IN',
+	'IA',
+	'KS',
+	'KY',
+	'LA',
+	'ME',
+	'MH',
+	'MD',
+	'MA',
+	'MI',
+	'MN',
+	'MS',
+	'MO',
+	'MT',
+	'NE',
+	'NV',
+	'NH',
+	'NJ',
+	'NM',
+	'NY',
+	'NC',
+	'ND',
+	'MP',
+	'OH',
+	'OK',
+	'OR',
+	'PW',
+	'PA',
+	'PR',
+	'RI',
+	'SC',
+	'SD',
+	'TN',
+	'TX',
+	'UT',
+	'VT',
+	'VI',
+	'VA',
+	'WA',
+	'WV',
+	'WI',
+	'WY'
+]
 
 class SearchPage extends Component
 {
@@ -13,11 +77,16 @@ class SearchPage extends Component
   {
     super(props);
 
+    this.state = {search: false, state: ''};
+
     this.pageRef = React.createRef();
 
     this.onZipChange = this.onZipChange.bind(this);
     this.onPhoneNumberChange = this.onPhoneNumberChange.bind(this);
     this.clearInputs = this.clearInputs.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
+    this.getSearchState = this.getSearchState.bind(this);
   }
 
   onZipChange(e)
@@ -80,26 +149,51 @@ class SearchPage extends Component
     }
   }
 
+  onSearch()
+  {
+    this.setState({search: true});
+  }
+
+  onSelectChange(e)
+  {
+    this.setState({state: e.target.value})
+  }
+
+  getSearchState()
+  {
+    var state = {};
+    var nodes = this.pageRef.parentNode.querySelectorAll('.input');
+    for (var i = 0; i < nodes.length; i++)
+    {
+      var val = nodes[i].querySelector('input').value;
+      if (nodes[i].querySelector('input').id === 'phoneNumber')
+        val = this._cleanPhoneNumber(val);
+      state[nodes[i].querySelector('input').id] = val;
+    }
+    return state;
+  }
+
   render()
   {
     return (
       <MuiThemeProvider theme={theme}>
+        {this.state.search ? <Redirect to={{ pathname: '/results', state: {search: this.getSearchState()} }} /> : null}
         <Header />
         <div className='page' ref={(e) => this.pageRef = e}>
           <Grid container>
             <Grid container spacing={2}>
               <Grid item>
-                <TextField id='first-name' label='First Name' className='input' style={theme.palette.gradientgray} />
+                <TextField id='firstName' label='First Name' className='input' style={theme.palette.gradientgray} />
               </Grid>
               <Grid item>
-                <TextField id='middle-name' label='Middle Name' className='input' style={theme.palette.gradientgray} />
+                <TextField id='middleName' label='Middle Name' className='input' style={theme.palette.gradientgray} />
               </Grid>
               <Grid item>
-                <TextField id='last-name' label='Last Name' className='input' style={theme.palette.gradientgray} />
+                <TextField id='lastName' label='Last Name' className='input' style={theme.palette.gradientgray} />
               </Grid>
               <Grid item style={{ flexGrow: 2 }}></Grid>
               <Grid item>
-                <TextField id='constituent-id' label='Constituent ID' className='input' style={theme.palette.gradientgray} />
+                <TextField id='constituentId' label='Constituent ID' className='input' style={theme.palette.gradientgray} />
               </Grid>
             </Grid>
             <Grid container style={{ marginTop: '2rem' }} spacing={2}>
@@ -113,7 +207,13 @@ class SearchPage extends Component
                 <TextField id='city' label='City' className='input' style={theme.palette.gradientgray} />
               </Grid>
               <Grid item>
-                <TextField id='state' label='State' className='input' style={theme.palette.gradientgray} />
+                <NativeSelect value={this.state.state} inputProps={{ id: 'state' }} style={{ minWidth: '4rem', marginTop: '1rem', paddingLeft: '.4rem', background: theme.palette.gradientgray.background }} onChange={this.onSelectChange}>
+                  <option value=''>State</option>
+                  {states.map((value, index) =>
+                  {
+                    return <option value={value} key={index}>{value}</option>
+                  })}
+                </NativeSelect>
               </Grid>
               <Grid item>
                 <TextField id='zip' label='Zip Code' className='input' style={theme.palette.gradientgray} onChange={this.onZipChange} />
@@ -124,12 +224,12 @@ class SearchPage extends Component
                 <TextField id='email' label='Email' className='input' style={theme.palette.gradientgray} />
               </Grid>
               <Grid item>
-                <TextField id='phone' label='Phone Number' className='input' style={theme.palette.gradientgray} onChange={this.onPhoneNumberChange} />
+                <TextField id='phoneNumber' label='Phone Number' className='input' style={theme.palette.gradientgray} onChange={this.onPhoneNumberChange} />
               </Grid>
             </Grid>
             <Grid container style={{ marginTop: '2rem' }} spacing={2}>
               <Grid item>
-                <Button id='searchButton' variant='contained' style={theme.palette.calmblue}>Search</Button>
+                <Button id='searchButton' variant='contained' style={theme.palette.calmblue} onClick={this.onSearch}>Search</Button>
               </Grid>
               <Grid item>
                 <Button id='clearButton' variant='contained' style={theme.palette.calmblue} onClick={this.clearInputs}>Clear</Button>

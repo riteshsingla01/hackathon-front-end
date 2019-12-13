@@ -25,6 +25,10 @@ const theme = createMuiTheme({
       backgroundColor: stjudepurple,
       color: stjudewhite
     },
+    gray: {
+      light: stjudelightgray,
+      dark: stjudedarkgray
+    },
     gradientgray: {
       background: 'linear-gradient(to top, ' + stjudedarkgray + ', ' + stjudelightgray + ' 10%, ' + stjudewhite + ' 35%)'
     }

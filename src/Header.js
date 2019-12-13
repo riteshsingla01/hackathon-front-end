@@ -31,7 +31,7 @@ export default function ButtonAppBar() {
   return (
     <div className={classes.root}>
       {logout ? <Redirect to='/' /> : null}
-      <AppBar position="static" style={{ background: '#DFE1DF' }}>
+      <AppBar position="fixed" style={{ background: '#DFE1DF' }}>
         <Toolbar>
           <Avatar  className={classes.avatar}>
             <FilterDramaIcon />
