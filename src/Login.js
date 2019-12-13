@@ -12,12 +12,20 @@ import Container from '@material-ui/core/Container';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
+var pageRef = React.createRef();
+
 const Login = () => {
   const [signIn, setSignIn] = useState(false);
   function onSignInClick()
   {
-    setSignIn(true);
+    if (pageRef.parentNode.querySelector('#username').value  === "test" && pageRef.parentNode.querySelector('#password').value  === "test" )
+      setSignIn(true);
+
+    else {
+      alert("Incorrect login info")
+    }
   }
+
 
   const classes = useStyles();
   return (
@@ -25,7 +33,7 @@ const Login = () => {
       {signIn ? <Redirect to='/search' /> : null}
       <Header />
       <Container component="main" maxWidth="sm" style={{ marginTop: '8rem' }}>
-        <div className = 'page'>
+        <div className = 'page' ref={(e) => pageRef = e}>
           <Grid container justify='center' style={{ marginBottom: '2rem' }}>
             <Grid item>
               <Avatar  className={classes.avatar}>
